@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app-server:
+    image: node-socketio-cluster-server
+    build:
+      target: deploy-server
+    ports:
+      - '3000:3000'
+  app-client:
+    image: node-socketio-cluster-client
+    build:
+      target: deploy-client
+    ports:
+      - 8080:80
