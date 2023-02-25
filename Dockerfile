@@ -15,7 +15,10 @@ RUN pnpm install -r --offline --filter ./server
 RUN pnpm run --filter ./server build
 RUN pnpm install -r --offline --prod --filter ./server
 
-FROM base AS deploy-server
+RUN rm -rf ./node_modules
+RUN pnpm install -r --offline --prod --filter ./server
+
+FROM node:18-alpine AS deploy-server
 
 WORKDIR /app
 
@@ -35,7 +38,7 @@ COPY client ./client
 RUN pnpm install -r --offline --filter ./client
 RUN pnpm run --filter ./client build
 
-FROM nginx:1.18-alpine AS deploy-client
+FROM nginx:1.23.3-alpine-slim AS deploy-client
 
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
