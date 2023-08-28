@@ -1,5 +1,5 @@
-serve:
-	pnpm run serve
+dev:
+	pnpm run dev
 
 deploy:
 	docker-compose up --remove-orphans --build
