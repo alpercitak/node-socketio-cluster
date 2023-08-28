@@ -5,18 +5,20 @@ RUN npm i -g pnpm
 COPY pnpm-lock.yaml ./
 RUN pnpm fetch
 
+COPY . .
+
+RUN npm i -g turbo
+
 FROM base AS build-server
 
 WORKDIR /app
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-COPY server ./server
-RUN pnpm install -r --offline --filter ./server
-RUN pnpm run --filter ./server build
-RUN pnpm install -r --offline --prod --filter ./server
+RUN pnpm i -r --offline --filter="node-socketio-cluster-server"
+RUN pnpm turbo build --filter="node-socketio-cluster-server"
 
 RUN rm -rf ./node_modules
-RUN pnpm install -r --offline --prod --filter ./server
+RUN rm -rf ./server/node_modules
+RUN pnpm i -r --offline --prod --filter="node-socketio-cluster-server"
 
 FROM node:18-alpine AS deploy-server
 
@@ -24,19 +26,18 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=build-server /app/node_modules/.pnpm ./node_modules/.pnpm
+COPY --from=build-server /app/node_modules/ ./node_modules
 COPY --from=build-server /app/server/node_modules ./server/node_modules
 COPY --from=build-server /app/server/dist ./server/dist
+
 CMD ["node", "server/dist/index.js"]
 
 FROM base AS build-client
 
 WORKDIR /app
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-COPY client ./client
-RUN pnpm install -r --offline --filter ./client
-RUN pnpm run --filter ./client build
+RUN pnpm i -r --offline --filter="node-socketio-cluster-client"
+RUN pnpm turbo build --filter="node-socketio-cluster-client"
 
 FROM nginx:1.23.3-alpine-slim AS deploy-client
 

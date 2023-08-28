@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm -r --stream dev",
-    "build": "pnpm -r --stream build",
-    "clean": "pnpm -r --stream clean"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "clean": "turbo clean"
   },
   "keywords": [],
   "author": "",
