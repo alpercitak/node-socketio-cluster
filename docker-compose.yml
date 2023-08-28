@@ -11,4 +11,4 @@ services:
     build:
       target: deploy-client
     ports:
-      - 8080:80
+      - 5173:80
