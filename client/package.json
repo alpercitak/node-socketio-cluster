@@ -17,7 +17,7 @@
     "socket.io-client": "^4.6.1",
     "vue": "^3.3.4"
   },
-   "devDependencies": {
+  "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
     "vite": "^4.4.9"
   }

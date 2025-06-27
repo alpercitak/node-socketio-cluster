@@ -1,20 +1,20 @@
-const cluster = require('cluster');
-const http = require('http');
-const { Server } = require('socket.io');
-const numCPUs = require('os').cpus().length;
-const { setupMaster, setupWorker } = require('@socket.io/sticky');
-const { createAdapter, setupPrimary } = require('@socket.io/cluster-adapter');
+const cluster = require("cluster");
+const http = require("http");
+const { Server } = require("socket.io");
+const numCPUs = require("os").cpus().length;
+const { setupMaster, setupWorker } = require("@socket.io/sticky");
+const { createAdapter, setupPrimary } = require("@socket.io/cluster-adapter");
 
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
 
   const httpServer = http.createServer((req: any, res: any) => {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Request-Method', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-    if (req.method === 'OPTIONS') {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Request-Method", "*");
+    res.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET");
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    if (req.method === "OPTIONS") {
       res.writeHead(200);
       res.end();
       return;
@@ -25,7 +25,7 @@ if (cluster.isMaster) {
 
   // setup sticky sessions
   setupMaster(httpServer, {
-    loadBalancingMethod: 'least-connection',
+    loadBalancingMethod: "least-connection",
   });
 
   // setup connections between the workers
@@ -39,7 +39,7 @@ if (cluster.isMaster) {
 
   // Node.js > 16.0.0
   cluster.setupPrimary({
-    serialization: 'advanced',
+    serialization: "advanced",
   });
 
   httpServer.listen(3000);
@@ -48,7 +48,7 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 
-  cluster.on('exit', (worker: any) => {
+  cluster.on("exit", (worker: any) => {
     console.log(`Worker ${worker.process.pid} died`);
     cluster.fork();
   });
@@ -58,11 +58,11 @@ if (cluster.isMaster) {
   const httpServer = http.createServer();
   const io = new Server(httpServer, {
     cors: {
-      origin: 'http://localhost:5173',
-      methods: ['GET', 'POST'],
+      origin: "http://localhost:5173",
+      methods: ["GET", "POST"],
       credentials: true,
     },
-    transports: ['websocket', 'polling'],
+    transports: ["websocket", "polling"],
     allowEIO3: true,
   });
 
@@ -72,7 +72,7 @@ if (cluster.isMaster) {
   // setup connection with the primary process
   setupWorker(io);
 
-  io.on('connection', (socket: any) => {
-    socket.emit('processId', process.pid);
+  io.on("connection", (socket: any) => {
+    socket.emit("processId", process.pid);
   });
 }
