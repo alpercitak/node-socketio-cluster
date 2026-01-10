@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^6.0.0
-        version: 6.0.0(vite@7.0.0(@types/node@24.0.4))(vue@3.5.17(typescript@5.8.3))
+        version: 6.0.3(vite@7.0.0(@types/node@24.0.4))(vue@3.5.17(typescript@5.8.3))
       vite:
         specifier: ^7.0.0
         version: 7.0.0(@types/node@24.0.4)
@@ -236,8 +236,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@rolldown/pluginutils@1.0.0-beta.19':
-    resolution: {integrity: sha512-3FL3mnMbPu0muGOCaKAhhFEYmqv9eTfPSJRJmANrCwtgK8VuxpsZDGK+m0LYAGoyO8+0j5uRe4PeyPDK1yA/hA==}
+  '@rolldown/pluginutils@1.0.0-beta.53':
+    resolution: {integrity: sha512-vENRlFU4YbrwVqNDZ7fLvy+JR1CRkyr01jhSiDpE1u6py3OMzQfztQU2jxykW3ALNxO4kSlqIDeYyD0Y9RcQeQ==}
 
   '@rollup/rollup-android-arm-eabi@4.44.1':
     resolution: {integrity: sha512-JAcBr1+fgqx20m7Fwe1DxPUl/hPkee6jA6Pl7n1v2EFiktAHenTaXl5aIFjUIEsfn9w3HE4gK1lEgNGMzBDs1w==}
@@ -378,11 +378,11 @@ packages:
   '@types/strip-json-comments@0.0.30':
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
 
-  '@vitejs/plugin-vue@6.0.0':
-    resolution: {integrity: sha512-iAliE72WsdhjzTOp2DtvKThq1VBC4REhwRcaA+zPAAph6I+OQhUXv+Xu2KS7ElxYtb7Zc/3R30Hwv1DxEo7NXQ==}
+  '@vitejs/plugin-vue@6.0.3':
+    resolution: {integrity: sha512-TlGPkLFLVOY3T7fZrwdvKpjprR3s4fxRln0ORDo1VQ7HHyxJwTlrjKU3kpVWTlaAjIEuCTokmjkZnr8Tpc925w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
-      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
       vue: ^3.2.25
 
   '@vue/compiler-core@3.5.17':
@@ -974,7 +974,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@rolldown/pluginutils@1.0.0-beta.19': {}
+  '@rolldown/pluginutils@1.0.0-beta.53': {}
 
   '@rollup/rollup-android-arm-eabi@4.44.1':
     optional: true
@@ -1069,9 +1069,9 @@ snapshots:
 
   '@types/strip-json-comments@0.0.30': {}
 
-  '@vitejs/plugin-vue@6.0.0(vite@7.0.0(@types/node@24.0.4))(vue@3.5.17(typescript@5.8.3))':
+  '@vitejs/plugin-vue@6.0.3(vite@7.0.0(@types/node@24.0.4))(vue@3.5.17(typescript@5.8.3))':
     dependencies:
-      '@rolldown/pluginutils': 1.0.0-beta.19
+      '@rolldown/pluginutils': 1.0.0-beta.53
       vite: 7.0.0(@types/node@24.0.4)
       vue: 3.5.17(typescript@5.8.3)
 
