@@ -1,4 +1,4 @@
-FROM node:22-alpine AS base
+FROM node:25-alpine AS base
 
 WORKDIR /app
 RUN npm i -g pnpm
@@ -20,7 +20,7 @@ RUN rm -rf ./node_modules
 RUN rm -rf ./server/node_modules
 RUN pnpm i -r --offline --prod --filter="node-socketio-cluster-server"
 
-FROM node:22-alpine AS deploy-server
+FROM node:25-alpine AS deploy-server
 
 WORKDIR /app
 
