@@ -5,16 +5,16 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { io } from 'socket.io-client';
 
-defineProps({
-  message: { type: String, default: null },
-});
+defineProps<{
+  message: string;
+}>();
 
-const processId = ref('');
-const isConnectionReady = ref(false);
+const processId = ref<string>('');
+const isConnectionReady = ref<boolean>(false);
 
 const socket = io('ws://localhost:3000/', {
   withCredentials: true,
