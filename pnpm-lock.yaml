@@ -34,8 +34,8 @@ importers:
   server:
     dependencies:
       '@socket.io/cluster-adapter':
-        specifier: ^0.2.2
-        version: 0.2.2(socket.io-adapter@2.5.6)
+        specifier: ^0.3.0
+        version: 0.3.0(socket.io-adapter@2.5.6)
       '@socket.io/sticky':
         specifier: ^1.0.4
         version: 1.0.4
@@ -373,11 +373,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@socket.io/cluster-adapter@0.2.2':
-    resolution: {integrity: sha512-/tNcY6qQx0BOgjl4mFk3YxX6pjaPdEyeWhP88Ea9gTlISY4SfA7t8VxbryeAs5/9QgXzChlvSN/i37Gog3kWag==}
+  '@socket.io/cluster-adapter@0.3.0':
+    resolution: {integrity: sha512-pHtPlQrKCWb1FE49nSaQSqB0xWYZ/OU8ONxWLWU79u6OA92/IHeHolVTcJfrsiK2Zvrh1yvMo3tVFKKjlKkKRQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
-      socket.io-adapter: ^2.4.0
+      socket.io-adapter: ~2.5.5
 
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
@@ -1117,9 +1117,9 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.55.1':
     optional: true
 
-  '@socket.io/cluster-adapter@0.2.2(socket.io-adapter@2.5.6)':
+  '@socket.io/cluster-adapter@0.3.0(socket.io-adapter@2.5.6)':
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.3
       socket.io-adapter: 2.5.6
     transitivePeerDependencies:
       - supports-color
