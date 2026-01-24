@@ -1,4 +1,4 @@
-# nest-socketio-cluster
+# node-socketio-cluster
 
 ![Build](https://github.com/alpercitak/node-socketio-cluster/actions/workflows/build.yaml/badge.svg) 
 ![License](https://img.shields.io/github/license/alpercitak/node-socketio-cluster)
