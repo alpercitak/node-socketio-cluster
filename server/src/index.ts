@@ -7,7 +7,7 @@ import os from 'os';
 
 const numCPUs = os.cpus().length;
 
-if (cluster.isPrimary) {
+const initPrimary = (): void => {
   console.log(`Master ${process.pid} is running with ${numCPUs} CPUs`);
 
   const httpServer = http.createServer((req: any, res: any) => {
@@ -21,8 +21,6 @@ if (cluster.isPrimary) {
       res.end();
       return;
     }
-
-    // ...
   });
 
   // setup sticky sessions
@@ -54,6 +52,10 @@ if (cluster.isPrimary) {
     console.log(`Worker ${worker.process.pid} died`);
     cluster.fork();
   });
+};
+
+if (cluster.isPrimary) {
+  initPrimary();
 } else {
   console.log(`Worker ${process.pid} started`);
 
