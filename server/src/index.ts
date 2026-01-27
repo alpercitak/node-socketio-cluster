@@ -1,5 +1,5 @@
 import cluster from 'cluster';
-import http from 'http';
+import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { setupMaster, setupWorker } from '@socket.io/sticky';
 import { createAdapter, setupPrimary } from '@socket.io/cluster-adapter';
@@ -10,7 +10,7 @@ const numCPUs = os.cpus().length;
 const initPrimary = (): void => {
   console.log(`Master ${process.pid} is running with ${numCPUs} CPUs`);
 
-  const httpServer = http.createServer((req: any, res: any) => {
+  const httpServer = createServer((req: any, res: any) => {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Request-Method', '*');
@@ -54,12 +54,10 @@ const initPrimary = (): void => {
   });
 };
 
-if (cluster.isPrimary) {
-  initPrimary();
-} else {
+const initWorker = (): void => {
   console.log(`Worker ${process.pid} started`);
 
-  const httpServer = http.createServer();
+  const httpServer = createServer();
   const io = new Server(httpServer, {
     cors: {
       origin: 'http://localhost:5173',
@@ -79,4 +77,10 @@ if (cluster.isPrimary) {
   io.on('connection', (socket: any) => {
     socket.emit('processId', process.pid);
   });
+};
+
+if (cluster.isPrimary) {
+  initPrimary();
+} else {
+  initWorker();
 }
