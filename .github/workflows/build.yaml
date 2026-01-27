@@ -16,4 +16,6 @@ jobs:
           node-version: "24"
           cache: "pnpm"
       - run: pnpm i --frozen-lockfile
-      - run: pnpm build
+      - uses: alpercitak/fasttrack@v0.1.13-alpha
+        with:
+          args: --build --affected
