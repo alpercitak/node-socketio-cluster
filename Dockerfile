@@ -39,7 +39,7 @@ WORKDIR /app
 RUN pnpm i -r --offline --filter="node-socketio-cluster-client"
 RUN pnpm turbo build --filter="node-socketio-cluster-client"
 
-FROM nginx:1.29.4-alpine-slim AS deploy-client
+FROM nginx:1.29.5-alpine-slim AS deploy-client
 
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
