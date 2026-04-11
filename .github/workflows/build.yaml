@@ -11,7 +11,7 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 0
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v6
         with:
           node-version: "24"
